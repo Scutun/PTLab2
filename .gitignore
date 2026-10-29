@@ -1,3 +1,22 @@
+# Python
 __pycache__/
-.DS_Store
+*.py[cod]
+
+# Окружения и секреты
 .env
+.venv/
+venv/
+
+# Django
+staticfiles/
+db.sqlite3
+
+# Покрытие тестами
+.coverage
+htmlcov/
+
+# IDE и системные файлы
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
