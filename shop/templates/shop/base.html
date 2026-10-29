@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Сад и огород{% endblock %}</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 0; background: #f6f8f4; color: #1f2a1c; }
+        header { background: #3d6b35; color: #fff; padding: 14px 24px; }
+        header a { color: #fff; text-decoration: none; font-size: 20px; font-weight: 600; }
+        main { max-width: 860px; margin: 24px auto; padding: 0 16px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; }
+        th, td { padding: 10px 12px; border-bottom: 1px solid #dfe6da; text-align: left; }
+        th { background: #e9f0e4; }
+        .num { text-align: right; white-space: nowrap; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 13px; }
+        .raised { background: #fde7d3; color: #9a4a00; }
+        .soldout { background: #f3d6d6; color: #8a1f1f; }
+        .button { display: inline-block; padding: 6px 14px; background: #3d6b35; color: #fff;
+                  border: 0; border-radius: 6px; text-decoration: none; cursor: pointer; font-size: 15px; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #dfe6da; }
+        .errorlist { color: #8a1f1f; margin: 4px 0; padding-left: 18px; }
+        form p { margin: 12px 0; }
+        label { display: block; margin-bottom: 4px; font-weight: 600; }
+        input { padding: 6px 8px; font-size: 15px; width: 100%; max-width: 360px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <header><a href="{% url 'index' %}">🌱 Сад и огород — магазин товаров для сада</a></header>
+    <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

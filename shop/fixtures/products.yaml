@@ -1,15 +1,64 @@
 - model: shop.product
   pk: 1
   fields:
-    name: Стол
-    price: 2000
+    name: Лопата штыковая
+    price: 1200
+    initial_quantity: 10
+    quantity: 10
+    price_increased: false
 - model: shop.product
   pk: 2
   fields:
-    name: Стул
-    price: 1000
+    name: Грабли веерные
+    price: 650
+    initial_quantity: 8
+    quantity: 8
+    price_increased: false
 - model: shop.product
   pk: 3
   fields:
-    name: Табурет
-    price: 500
+    name: Секатор
+    price: 900
+    initial_quantity: 6
+    quantity: 6
+    price_increased: false
+- model: shop.product
+  pk: 4
+  fields:
+    name: Шланг поливочный 20 м
+    price: 2300
+    initial_quantity: 5
+    quantity: 5
+    price_increased: false
+- model: shop.product
+  pk: 5
+  fields:
+    name: Тачка садовая
+    price: 4800
+    initial_quantity: 4
+    quantity: 4
+    price_increased: false
+- model: shop.product
+  pk: 6
+  fields:
+    name: Семена газонной травы 1 кг
+    price: 450
+    initial_quantity: 20
+    quantity: 20
+    price_increased: false
+- model: shop.product
+  pk: 7
+  fields:
+    name: Перчатки садовые
+    price: 150
+    initial_quantity: 30
+    quantity: 30
+    price_increased: false
+- model: shop.product
+  pk: 8
+  fields:
+    name: Лейка 10 л
+    price: 550
+    initial_quantity: 3
+    quantity: 3
+    price_increased: false

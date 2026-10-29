@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+{% block title %}Спасибо за покупку{% endblock %}
+{% block content %}
+    <div class="card">
+        <h2>Спасибо за покупку, {{ purchase.person }}!</h2>
+        <p>Товар: {{ product.name }}, {{ purchase.count }} шт. × {{ purchase.price }} руб.</p>
+        <p>Итого к оплате: <b>{{ purchase.total }} руб.</b></p>
+        <p>Адрес доставки: {{ purchase.address }}</p>
+        <p>Осталось на складе: {{ product.quantity }} шт.</p>
+        {% if price_changed %}
+            <p><span class="badge raised">Остаток товара уменьшился более чем в два раза —
+               новая цена {{ product.price }} руб. (+20 %).</span></p>
+        {% endif %}
+    </div>
+    <p><a href="{% url 'index' %}">← к списку товаров</a></p>
+{% endblock %}
