@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Товары</title>
-</head>
-<body>
-    <div>
-        <h3>Список</h3>
-        <table>
+{% extends "shop/base.html" %}
+{% block title %}Товары{% endblock %}
+{% block content %}
+    <h2>Список товаров</h2>
+    <p>Когда остаток товара становится меньше половины начального количества,
+       его цена возрастает на 20 %.</p>
+    <table>
+        <tr>
+            <th>Наименование</th>
+            <th class="num">Цена, руб.</th>
+            <th class="num">На складе, шт.</th>
+            <th></th>
+        </tr>
+        {% for p in products %}
             <tr>
-                <td><p>Наименование</p></td>
-                <td><p>Цена</p></td>
-                <td></td>
+                <td>
+                    {{ p.name }}
+                    {% if p.price_increased %}<span class="badge raised">цена +20 %</span>{% endif %}
+                </td>
+                <td class="num">{{ p.price }}</td>
+                <td class="num">{{ p.quantity }} из {{ p.initial_quantity }}</td>
+                <td>
+                    {% if p.is_available %}
+                        <a class="button" href="{% url 'buy' p.id %}">Купить</a>
+                    {% else %}
+                        <span class="badge soldout">нет в наличии</span>
+                    {% endif %}
+                </td>
             </tr>
-            {% for p in products %}
-                <tr>
-                    <td><p>{{ p.name }}</p></td>
-                    <td><p>{{ p.price }}</p></td>
-                    <td><p><a href="/buy/{{ p.id }}">Купить</a></p></td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
-</body>
-</html>
+        {% empty %}
+            <tr><td colspan="4">Товаров пока нет.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}
