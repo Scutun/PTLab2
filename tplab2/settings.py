@@ -35,6 +35,8 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
     CSRF_TRUSTED_ORIGINS = [f'https://{RENDER_EXTERNAL_HOSTNAME}']
+    # Render принимает HTTPS и передаёт запрос приложению по HTTP
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -88,6 +90,7 @@ DATABASES = {
         default=(f'postgres://postgres:{DATABASE_PASSWORD}'
                  f'@localhost:5432/django_db'),
         conn_max_age=600,
+        conn_health_checks=True,
     )
 }
 

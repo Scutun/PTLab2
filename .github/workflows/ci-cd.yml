@@ -49,3 +49,21 @@ jobs:
         run: |
           coverage run manage.py test shop
           coverage report
+
+  deploy:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Trigger deploy on Render
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "::warning::Секрет RENDER_DEPLOY_HOOK_URL не задан, развёртывание пропущено"
+            exit 0
+          fi
+          curl --fail --silent --show-error -X POST "$RENDER_DEPLOY_HOOK_URL"
+          echo "Развёртывание на Render запущено"
